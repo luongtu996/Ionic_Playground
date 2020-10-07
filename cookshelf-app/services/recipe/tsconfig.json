@@ -1,0 +1,12 @@
+{
+  "extends": "../../common/tsconfig.common.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "es2019",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "incremental": true
+  },
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,465 @@
+fragment DistributionCentreFields on DistributionCentre {
+   _id
+   name
+   address1
+   address2
+   city
+   postcode
+   lat
+   long
+
+} 
+
+fragment DistributionCentreExpandedFields on DistributionCentre {
+   _id
+   name
+   address1
+   address2
+   city
+   postcode
+   lat
+   long
+   products {
+      _id
+      label
+      description
+   }
+   actions {
+      _id
+      title
+      description
+      status
+      assignedAt
+      completedAt
+      _createdAt
+   }
+} 
+
+fragment ProductFields on Product {
+   _id
+   label
+   description
+
+} 
+
+fragment ProductExpandedFields on Product {
+   _id
+   label
+   description
+   volunteerActionProducts {
+      _id
+   }
+   distributionCentre {
+      _id
+      name
+      address1
+      address2
+      city
+      postcode
+      lat
+      long
+   }
+} 
+
+fragment VolunteerActionProductFields on VolunteerActionProduct {
+   _id
+
+} 
+
+fragment VolunteerActionProductExpandedFields on VolunteerActionProduct {
+   _id
+   volunteerAction {
+      _id
+      title
+      description
+      status
+      assignedAt
+      completedAt
+      _createdAt
+   }
+   product {
+      _id
+      label
+      description
+   }
+} 
+
+fragment VolunteerActionFields on VolunteerAction {
+   _id
+   title
+   description
+   status
+   assignedAt
+   completedAt
+   _createdAt
+
+} 
+
+fragment VolunteerActionExpandedFields on VolunteerAction {
+   _id
+   title
+   description
+   status
+   assignedAt
+   completedAt
+   _createdAt
+   volunteer {
+      _id
+      firstName
+      lastName
+      email
+      username
+      address1
+      address2
+      city
+      postcode
+      dateOfBirth
+      canDeliver
+      actionsCompleted
+      actionsActive
+      active
+   }
+   recipient {
+      _id
+      firstName
+      lastName
+      phone
+      address1
+      address2
+      postcode
+      city
+      lat
+      long
+      actionsCompleted
+      deliveryDays
+      prefferedProducts
+   }
+   distributionCentre {
+      _id
+      name
+      address1
+      address2
+      city
+      postcode
+      lat
+      long
+   }
+   products {
+      _id
+   }
+} 
+
+fragment VolunteerFields on Volunteer {
+   _id
+   firstName
+   lastName
+   email
+   username
+   address1
+   address2
+   city
+   postcode
+   dateOfBirth
+   canDeliver
+   actionsCompleted
+   actionsActive
+   active
+
+} 
+
+fragment VolunteerExpandedFields on Volunteer {
+   _id
+   firstName
+   lastName
+   email
+   username
+   address1
+   address2
+   city
+   postcode
+   dateOfBirth
+   canDeliver
+   actionsCompleted
+   actionsActive
+   active
+   actions {
+      _id
+      title
+      description
+      status
+      assignedAt
+      completedAt
+      _createdAt
+   }
+} 
+
+fragment RecipientFields on Recipient {
+   _id
+   firstName
+   lastName
+   phone
+   address1
+   address2
+   postcode
+   city
+   lat
+   long
+   actionsCompleted
+   deliveryDays
+   prefferedProducts
+
+} 
+
+fragment RecipientExpandedFields on Recipient {
+   _id
+   firstName
+   lastName
+   phone
+   address1
+   address2
+   postcode
+   city
+   lat
+   long
+   actionsCompleted
+   deliveryDays
+   prefferedProducts
+   actions {
+      _id
+      title
+      description
+      status
+      assignedAt
+      completedAt
+      _createdAt
+   }
+} 
+
+fragment DailyActionPlanFields on DailyActionPlan {
+   _id
+   owner
+   date
+   numberOfCasesCreated
+   numberOfVolunteersAssigned
+   numberOfRecipients
+
+} 
+
+fragment DailyActionPlanExpandedFields on DailyActionPlan {
+   _id
+   owner
+   date
+   numberOfCasesCreated
+   numberOfVolunteersAssigned
+   numberOfRecipients
+
+} 
+
+query findDistributionCentres($filter: DistributionCentreFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findDistributionCentres(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...DistributionCentreExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getDistributionCentre($id: GraphbackObjectID!) {
+    getDistributionCentre(id: $id) {
+      ...DistributionCentreExpandedFields
+    }
+  }
+
+query findProducts($filter: ProductFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findProducts(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...ProductExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getProduct($id: GraphbackObjectID!) {
+    getProduct(id: $id) {
+      ...ProductExpandedFields
+    }
+  }
+
+query findVolunteerActionProducts($filter: VolunteerActionProductFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findVolunteerActionProducts(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...VolunteerActionProductExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getVolunteerActionProduct($id: GraphbackObjectID!) {
+    getVolunteerActionProduct(id: $id) {
+      ...VolunteerActionProductExpandedFields
+    }
+  }
+
+query findVolunteerActions($filter: VolunteerActionFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findVolunteerActions(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...VolunteerActionExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getVolunteerAction($id: GraphbackObjectID!) {
+    getVolunteerAction(id: $id) {
+      ...VolunteerActionExpandedFields
+    }
+  }
+
+query findVolunteers($filter: VolunteerFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findVolunteers(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...VolunteerExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getVolunteer($id: GraphbackObjectID!) {
+    getVolunteer(id: $id) {
+      ...VolunteerExpandedFields
+    }
+  }
+
+query findRecipients($filter: RecipientFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findRecipients(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...RecipientExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getRecipient($id: GraphbackObjectID!) {
+    getRecipient(id: $id) {
+      ...RecipientExpandedFields
+    }
+  }
+
+query findDailyActionPlans($filter: DailyActionPlanFilter, $page: PageRequest, $orderBy: OrderByInput) {
+    findDailyActionPlans(filter: $filter, page: $page, orderBy: $orderBy) {
+      items {
+        ...DailyActionPlanExpandedFields
+      }
+      offset
+      limit
+      count
+    }
+  }
+
+query getDailyActionPlan($id: GraphbackObjectID!) {
+    getDailyActionPlan(id: $id) {
+      ...DailyActionPlanExpandedFields
+    }
+  }
+
+mutation createDistributionCentre($input: CreateDistributionCentreInput!) {
+  createDistributionCentre(input: $input) {
+      ...DistributionCentreFields
+  }
+}
+
+
+mutation updateDistributionCentre($input: MutateDistributionCentreInput!) {
+  updateDistributionCentre(input: $input) {
+      ...DistributionCentreFields
+  }
+}
+
+
+mutation createProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+      ...ProductFields
+  }
+}
+
+
+mutation updateProduct($input: MutateProductInput!) {
+  updateProduct(input: $input) {
+      ...ProductFields
+  }
+}
+
+
+mutation createVolunteerActionProduct($input: CreateVolunteerActionProductInput!) {
+  createVolunteerActionProduct(input: $input) {
+      ...VolunteerActionProductFields
+  }
+}
+
+
+mutation createVolunteerAction($input: CreateVolunteerActionInput!) {
+  createVolunteerAction(input: $input) {
+      ...VolunteerActionFields
+  }
+}
+
+
+mutation updateVolunteerAction($input: MutateVolunteerActionInput!) {
+  updateVolunteerAction(input: $input) {
+      ...VolunteerActionFields
+  }
+}
+
+
+mutation createVolunteer($input: CreateVolunteerInput!) {
+  createVolunteer(input: $input) {
+      ...VolunteerFields
+  }
+}
+
+
+mutation updateVolunteer($input: MutateVolunteerInput!) {
+  updateVolunteer(input: $input) {
+      ...VolunteerFields
+  }
+}
+
+
+mutation createRecipient($input: CreateRecipientInput!) {
+  createRecipient(input: $input) {
+      ...RecipientFields
+  }
+}
+
+
+mutation updateRecipient($input: MutateRecipientInput!) {
+  updateRecipient(input: $input) {
+      ...RecipientFields
+  }
+}
+
+
+mutation createDailyActionPlan($input: CreateDailyActionPlanInput!) {
+  createDailyActionPlan(input: $input) {
+      ...DailyActionPlanFields
+  }
+}
+
+
+mutation updateDailyActionPlan($input: MutateDailyActionPlanInput!) {
+  updateDailyActionPlan(input: $input) {
+      ...DailyActionPlanFields
+  }
+}

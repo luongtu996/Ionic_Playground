@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button
+        icon="arrow-back"
+        [defaultHref]="['/counter-detail', counter.id, 'analytics']"
+      >
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{counter.title}} &#62; {{analyticsItem.info.name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-template appCounterAnalytics></ng-template>
+</ion-content>

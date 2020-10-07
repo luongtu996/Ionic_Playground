@@ -1,0 +1,80 @@
+# Write your query or mutation here
+
+query findAllVolunteers {
+  findVolunteers {
+    items {
+      id,
+      firstName,
+      lastName,
+      email,
+      username,
+      address1,
+      address2,
+      city,
+      postcode,
+      canDeliver,
+      actions {
+        id,
+        products {
+          id,
+          product {
+            id,
+            label
+          }
+        }
+      }
+    }
+  }
+}
+
+
+query findAllRecipients {
+  findRecipients {
+    items {
+      id,
+      lastName,
+      firstName,
+      phone,
+      address1,
+      address2,
+      city,
+      postcode,
+      prefferedProducts
+    }
+  }
+}
+
+mutation createVolunteerAction {
+  createVolunteerAction(
+    input: {
+      id: ""
+      title: "Deliver to Mr Boris"
+      description: "Phone Number: +473020323"
+      products: "Bread, Pasta, ToiletPaper",
+      recieverId: "5e8f3eda92787169c1e7cd87"
+      volunteerId: "5e9782e94b8d743f02b84e79",
+      status: ASSIGNED
+    }
+  ) {
+    id
+    title
+    description
+  }
+}
+
+
+mutation createDistributionCentre {
+  createDistributionCentre(
+    input: {
+      name: "NY Plaza Charity Chain"
+      address: "Plaza Key"
+      address2: "Brooklyn"
+      city: "New York"
+      lat: "0"
+      long: "0"
+    }
+  ) {
+    id
+  }
+}
+

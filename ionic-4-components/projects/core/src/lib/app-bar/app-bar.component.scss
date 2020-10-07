@@ -1,0 +1,144 @@
+:host {
+  /**
+  * @prop --fiv-appbar-background-color: Background of the app bar
+  * @prop --fiv-icon-color: Icon color of the tabs
+  */
+
+  display: block;
+  position: relative;
+  --fiv-radius: 72px;
+  --fiv-appbar-fab-size: 56px;
+  --fiv-appbar-height: 56px;
+  width: 100%;
+  --fiv-border-radius: 6px;
+  --fiv-appbar-background-color: var(--ion-color-light);
+  --fiv-side-width: 12px;
+  --fiv-fab-icon-color: var(--ion-color-light);
+}
+
+svg {
+  height: calc(var(--fiv-radius) / 2);
+  width: var(--fiv-radius);
+  left: calc(50% - (var(--fiv-radius) / 2));
+  position: absolute;
+  bottom: calc(
+    env(safe-area-inset-bottom) + var(--fiv-appbar-height) - var(--fiv-radius) /
+      2 - var(--fiv-border-radius)
+  );
+  path {
+    fill: var(--fiv-appbar-background-color);
+  }
+}
+
+.appbar {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: calc(var(--fiv-appbar-height) + env(safe-area-inset-bottom));
+  background: rgba(0, 0, 0, 0);
+  z-index: 5000;
+  .appbar-rect {
+    overflow: hidden;
+    position: absolute;
+    width: calc(50% - (var(--fiv-radius) / 2));
+    height: calc(var(--fiv-appbar-height) + env(safe-area-inset-bottom));
+    bottom: 0;
+    box-shadow: 3px -4px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+  .appbar-rect.left {
+    left: 0;
+    background: var(--fiv-appbar-background-color);
+    border-top-right-radius: var(--fiv-border-radius);
+  }
+  .appbar-rect.right {
+    right: 0;
+    background: var(--fiv-appbar-background-color);
+    border-top-left-radius: var(--fiv-border-radius);
+  }
+  ::ng-deep fiv-fab {
+    position: absolute;
+    left: calc(50% - 0.5 * var(--fiv-fab-size));
+    top: calc(-0.5 * var(--fiv-appbar-fab-size) + var(--fiv-border-radius));
+    display: block;
+    --fiv-fab-size: var(--fiv-appbar-fab-size);
+    z-index: 14;
+    fiv-icon {
+      --fiv-icon-color: var(--fiv-fab-icon-color);
+    }
+  }
+
+  .rect-filler {
+    width: var(--fiv-radius);
+    height: calc(
+      env(safe-area-inset-bottom) + var(--fiv-appbar-height) - var(--fiv-radius) /
+        2 - var(--fiv-border-radius)
+    );
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: calc(50% - (var(--fiv-radius) / 2));
+    background: var(--fiv-appbar-background-color);
+  }
+}
+
+.appbar:not(.cutout) {
+  .appbar-rect.left {
+    border-top-right-radius: 0px;
+  }
+  .appbar-rect.right {
+    border-top-left-radius: 0px;
+  }
+}
+
+.appbar.left {
+  .appbar-rect.left {
+    width: var(--fiv-side-width);
+  }
+  .appbar-rect.right {
+    width: calc(100% - var(--fiv-radius) - var(--fiv-side-width));
+  }
+  svg {
+    left: var(--fiv-side-width);
+  }
+  .rect-filler {
+    left: var(--fiv-side-width);
+  }
+  ::ng-deep fiv-fab {
+    transform: translateX(0);
+    left: calc(
+      var(--fiv-side-width) + var(--fiv-radius) / 2 - var(--fiv-appbar-fab-size) /
+        2
+    );
+    position: absolute;
+  }
+}
+
+.appbar.right {
+  .appbar-rect.left {
+    width: calc(100% - var(--fiv-radius) - var(--fiv-side-width));
+  }
+  .appbar-rect.right {
+    width: var(--fiv-side-width);
+  }
+  svg {
+    left: calc(100% - var(--fiv-radius) - var(--fiv-side-width));
+  }
+  .rect-filler {
+    left: calc(100% - var(--fiv-radius) - var(--fiv-side-width));
+  }
+  ::ng-deep fiv-fab {
+    transform: translateX(0);
+    left: calc(
+      100% - var(--fiv-side-width) - var(--fiv-radius) / 2 -
+        var(--fiv-appbar-fab-size) / 2
+    );
+  }
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}

@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+
+  recipe-service:
+    build: ./services/recipe
+    environment:
+      DATABASE_HOST: db
+    ports:
+      - 3000:3000
+
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - ./services/recipe/.env
+    ports: 
+      - 5432:5432

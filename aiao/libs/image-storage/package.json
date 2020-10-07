@@ -1,0 +1,22 @@
+{
+  "name": "@aiao/image-storage",
+  "version": "0.1.2-alpha.2",
+  "description": "image storage",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [],
+  "scripts": {
+    "build": "cd ../../ && yarn build image-storage --prod"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

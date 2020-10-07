@@ -1,0 +1,66 @@
+= OpenVolunteerPlatform
+
+//[![TypeScript version][ts-badge]][typescript-30]
+//[![Node.js version][nodejs-badge]][nodejs]
+//[![APLv2][license-badge]][LICENSE]
+//[![PRs Welcome][prs-badge]][prs]
+//[![Discord Chat](https://img.shields.io/discord/632220458137419776)](https://discord.gg/mJ7j84m)
+
+*OpenVolunteerPlatform* lets you automate and optimize the work of volunteers for your orgranization or charity. 
+OpenVolunteerPlatform is a starter application that integrates with various open source technologies to provide out of the box solutions that are customizable for your organization. 
+
+== Motivation Video
+
+Why we built OpenVolunteerPlatform:
+
+https://www.youtube.com/watch?v=mu9Rnu6Q9_o
+
+== Demo Video
+
+Demo of the system: 
+
+https://www.youtube.com/watch?v=_cn_ZoZLq5g
+
+== Documentation
+
+https://openvolunteer.org
+
+== Features
+
+* Open platform for rapid development of volunteer management systems
+* Out of the box, secure API exposing of your data using role-based authorization
+* Reference implementations to cover basic use cases
+* Ready to use components for forms, communication, and maps
+* Live updates and tracking thanks to GraphQL subscriptions
+* Reports and statistics for app administrators
+* Management panel for creating volunteer actions
+* Rule-based, automatic scheduling and time management
+* Simple methods for producing reports and collecting feedback from the field
+
+image::./website/static/img/app.png[Sunset,200,400]
+
+== Technical Details
+
+The application includes:
+
+- Integration with link:http://graphback.dev[Graphback] helps you generate your backend and client side queries based on user-provided business models
+- link:http://offix.dev[Offix client], gives you a fully featured offline experience
+- Integration with Keycloak (SSO) for server and client authentication and user management
+- GraphQL subscriptions backed by an MQTT broker(AMQ)
+
+== License
+
+This solution starter is made available under the MIT License.
+
+== History
+
+Repository is based on https://github.com/aerogear/datasync-starter project that our team build over the years.
+All development on the repository started around March 2020 after we started to see problems with the isolation and looked for 
+more comprehensive and flexible solutions to resolve this issues. Instead of building an App - we decided to reach out to organizations and 
+local communities to see what problems they facing. In most of the cases those were really specific to the community and almost always
+required certain level of customization on top of the very well known model of Workforce Management systems. 
+This is why OpenVolunteerPlatform was started and going to be continously evolving to help organizations to fight crisises like COVID19.
+
+
+
+

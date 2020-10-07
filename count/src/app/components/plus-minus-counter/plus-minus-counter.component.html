@@ -1,0 +1,79 @@
+<ion-item #rootItem
+  [style.--min-height.vh]="minHeight"
+  class="ion-no-padding"
+  (window:resize)="recordWidths()"
+>
+  <ng-template [ngIf]="counter.minusCount < 0">
+    <ion-button
+      #buttonLeft
+
+      class="ion-no-padding"
+
+      size="large"
+      color="danger"
+      expand="full"
+
+      [disabled]="counter.locked"
+      (click)="countMinus()"
+    >
+      <div [ngSwitch]="counter.minusCount">
+        <div *ngSwitchCase="-1">
+          <ion-icon name="remove"></ion-icon>
+        </div>
+
+        <div *ngSwitchDefault>
+          {{counter.minusCount}}
+        </div>
+
+      </div>
+    </ion-button>
+  </ng-template>
+
+
+  <ion-label
+    class="ion-text-center"
+    #textCenter
+
+    clickable
+    (click)="showDetails()"
+  >
+    <h1 *ngIf="!hideTitle">{{counter.title}}</h1>
+    <h1>{{counter.count}}</h1>
+  </ion-label>
+
+    <ng-template [ngIf]="showDetailsOnClick">
+      <ion-icon
+        #clickIndicator
+        name="chevron-forward-outline"
+      ></ion-icon>
+    </ng-template>
+
+  <ng-template [ngIf]="counter.plusCount > 0">
+    <ion-button
+      #buttonRight
+
+      class="ion-no-padding"
+
+      size="large"
+      color="success"
+      expand="full"
+
+      [disabled]="counter.locked"
+      (click)="countPlus()"
+    >
+      <div [ngSwitch]="counter.plusCount">
+        <div *ngSwitchCase="1">
+          <ion-icon name="add"></ion-icon>
+        </div>
+
+        <div *ngSwitchDefault>
+          +{{counter.plusCount}}
+        </div>
+
+      </div>
+    </ion-button>
+  </ng-template>
+
+  <ion-reorder slot="end"></ion-reorder>
+
+</ion-item>

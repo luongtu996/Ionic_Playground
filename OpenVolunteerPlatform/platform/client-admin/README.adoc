@@ -1,0 +1,58 @@
+= React Client
+
+React Web implementation for OpenVolunteer
+
+== Getting Started
+
+Requirements:
+
+- Node.js 12.x or above to run server
+- (optional) Keycloack server
+
+=== Running the Client in dev mode
+
+. Install Ionic
++
+```shell
+npm install -g @ionic/cli
+```
+
+. Install dependencies
++
+```shell
+npm install
+```
+
+. Start the app
++
+```shell
+npm run dev
+```
+
+=== Adding keycloak integration to the client
+
+Rename the `keycloak.example.json` to `keycloak.json` and update the fields
+accordingly.
+ 
+[source,js]
+----
+{
+  "realm": "<your realm>",
+  "auth-server-url": "https://your-server/auth",
+  "ssl-required": "none",
+  "resource": "<your-client>",
+  "public-client": true,
+  "use-resource-role-mappings": true,
+  "confidential-port": 0
+}
+----
+
+
+=== Customizing the Action Reports Grid
+
+Column size can be customized via the `REACT_APP_REPORT_COLUMN_SIZE` environment variable. This value can be changed in `.env` file. The default value is `4`.
+
+=== Customizing action report nearby distance
+
+Nearby distance to calculate actions reports depending on closeness of recipient location can be customized via `REACT_APP_NEARBY_MAX_DISTANCE` environment variable.
+This value can be changed in `.env` file. The default value is `100` km.

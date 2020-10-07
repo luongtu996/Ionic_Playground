@@ -1,0 +1,7 @@
+server:
+  compression:
+    enabled: true
+    
+logging:
+  level:
+    ch: WARN

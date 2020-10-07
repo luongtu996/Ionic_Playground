@@ -1,0 +1,7 @@
+{
+  "appId": "ch.rasc.localnotification",
+  "appName": "localnotification",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/app"
+}

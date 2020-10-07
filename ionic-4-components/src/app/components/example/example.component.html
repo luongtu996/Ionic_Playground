@@ -1,0 +1,12 @@
+<div class="content-container">
+  <mat-tab-group dynamicHeight="false" animationDuration="180" [selectedIndex]="0">
+    <mat-tab label="EXAMPLE">
+      <div class="content-container">
+        <ng-content></ng-content>
+      </div>
+    </mat-tab>
+    <mat-tab label="DOCUMENTATION">
+      <markdown [src]="docs"></markdown>
+    </mat-tab>
+  </mat-tab-group>
+</div>

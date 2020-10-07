@@ -1,0 +1,9 @@
+query findMyVolunteerActions($volunteerId: GraphbackObjectID!, $status: String) {
+  findVolunteerActions(filter: { volunteerId: {eq: $volunteerId}, status: {
+    eq: $status
+  } }) {
+    items {
+      ...VolunteerActionFields
+    }
+  }
+}

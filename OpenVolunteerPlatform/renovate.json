@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base",
+    ":pinVersions"
+  ],
+  "groupName": "all",
+  "automerge": false,
+  "major": {
+    "automerge": false
+  }
+}

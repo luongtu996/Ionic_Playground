@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="(news$ | async); else loading">
+    <ion-card *ngFor="let article of (news$ | async)?.articles" (click)="onClick(article.url)">
+      <ion-img [src]="article.urlToImage"></ion-img>
+
+      <ion-card-header>
+        <ion-card-title>{{ article.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ article.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #loading>
+    <ion-card *ngFor="let _ of loadingSkeleton">
+      <ion-skeleton-text animated style="width: 100%; line-height: 100px;"></ion-skeleton-text>
+    </ion-card>
+  </ng-template>
+</ion-content>

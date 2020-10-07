@@ -1,0 +1,96 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+:root {
+  --footer-min-height: 56px;
+  --ion-default-font: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 180px;
+  padding: 16px;
+  position: relative;
+}
+.center-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: var(--ion-color-primary);
+}
+
+.page-content {
+  min-height: var(--example-min-height);
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+}
+ion-item-divider {
+  border: none;
+}
+
+ion-card {
+  transition: box-shadow 140ms;
+}
+
+ion-card:hover {
+  box-shadow: 0 0.35em 1.175em rgba(0, 0, 0, 0.1),
+    0 0.175em 0.5em rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+ion-toolbar {
+  --min-height: 80px;
+}
+
+fiv-router-item {
+  ion-item {
+    --min-height: 24px;
+  }
+}
+
+// theme
+:root {
+  ion-card {
+    --background: var(--ion-item-background);
+  }
+  ion-toolbar {
+    --background: var(--ion-background-color);
+  }
+
+  fiv-feature-discovery {
+    --fiv-color-feature: var(--ion-color-primary);
+  }
+
+  fiv-router-item {
+    --fiv-background: var(--ion-background-color);
+  }
+
+  ion-item {
+    --background: var(--ion-background-color);
+  }
+}
+
+fiv-overlay-content {
+  .chip .arrow {
+    fill: var(--ion-color-tertiary);
+    opacity: 0.1;
+  }
+}

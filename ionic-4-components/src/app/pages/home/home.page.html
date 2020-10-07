@@ -1,0 +1,78 @@
+<app-header [backbutton]="false" [title]="'Ionic 4 Components'"></app-header>
+
+<ion-content>
+
+    <ion-grid fixed class="ion-no-padding">
+        <ion-row>
+            <ion-col sizeXl="10" offsetXl="1" sizeLg="10" offsetLg="1" sizeMd="12" sizeXs="12" offsetXs="0" offsetSm="0"
+                offsetMd="0" sizeSm="12" sizeMd="12">
+                <p>
+
+                </p>
+                <div class="docs-cards">
+                    <ion-card class="tall" [routerLink]="['/components']">
+                        <img alt="components banner" src="assets/banners/components.svg">
+                        <ion-card-header>
+                            <ion-card-title>Components Overview</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            Discover our components docs and examples.
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card [routerLink]="['/getting-started']">
+                        <ion-card-header>
+                            <ion-card-title>Getting Started</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            A step-by-step guide on how to install and start using this component library.
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card href="https://github.com/fivethree-team/ionic-4-components">
+                        <ion-card-header>
+                            <ion-card-title>Contributions Welcome!</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            If you want to add a component or found a bug, create a pull request or file an issue.
+                            <br>
+                            <mdo-github-button [count]="true" user="fivethree-team" repo="ionic-4-components">
+                            </mdo-github-button>
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card class="tall" [routerLink]="['/developer-tools']">
+                        <img alt="developer tools banner" src="assets/banners/tools.svg">
+                        <ion-card-header>
+                            <ion-card-title>Developer Tools</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            We have some VS Code Extensions to make working with ionic and this library a breeze.
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card href="https://fivethree.io">
+                        <ion-card-header>
+                            <ion-card-title>Get in Touch</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            You can find us on twitter <a
+                                href="https://twitter.com/garygrossgarten">@garygrossgarten</a> and <a
+                                href="https://twitter.com/mrcjln">@mrcjln</a> or on <a
+                                href="https://fivethree.io">fivethree.io</a>.
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card>
+                        <ion-card-header>
+                            <ion-card-title>Resources</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            Learn more about what you need to get started with the library.
+                            This library uses <a href="https://ionicframework.com">Ionic 4</a> and
+                            <a href="https://angular.io">Angular 8</a>.
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+
+</ion-content>

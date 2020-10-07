@@ -1,0 +1,3 @@
+<ion-chip [@status] (click)="FivNetworkStatusClicked()" *ngIf="visible">
+  <fiv-icon [badge]="-1" [fivCenter] [off]="status === 'offline'" name="cloud"></fiv-icon>
+</ion-chip>

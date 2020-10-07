@@ -1,0 +1,56 @@
+{
+  "MostPracticed": "Most Attempted Dictations",
+  "NewCreated":"Latest Created Dictations",
+  "MostRecommended":"Most Recommended Dictations",
+  "LatestPracticed":"Last Dictation Practiced",
+  "SuitableAge": {
+    "Any": "Any"
+  },
+  "SuitableStudent": {
+    "Any": "Any",
+    "Kindergarten": "Kindergarten (3-5)",
+    "JuniorPrimary": "Junior Primary (6-8)",
+    "SeniorPrimary": "Senior Primary (9-11)",
+    "JuniorSecondary": "Junior Secondary (12-14)",
+    "SeniorSecondary": "Senior Secondary (15-17)"
+  },
+  "SentenceLength": {
+    "Short": "Short",
+    "Normal": "Normal",
+    "Long": "Long",
+    "VeryLong": "Very Long"
+  },
+  "VocabDifficulty": {
+    "Beginner": "Beginner",
+    "Easy": "Easy",
+    "Normal": "Normal",
+    "Hard": "Hard",
+    "VeryHard": "Very Hard"
+  },
+  "VocabularyPracticeDescription": {
+    "ThisExercise": "This exercise has",
+    "Over": "over",
+    "MostFrequentlyUsedEnglishWords": "most frequently used English words",
+    "WithPronunciationAndImage": "with pronunciation and image",
+    "AfterLogin": "After login, you can",
+    "RevisitMisspelledWords": "revisit frequently misspelled words",
+    "KnowWhatYouLearn": "know what you learn",
+    "EarnStars": "earn stars and compete with everyone"
+  },
+  "Menu_Quick": "Quick",
+  "Menu_Start": "Start",
+  "Menu_Create": "Create",
+  "Menu_Search": "Find",
+  "Input and Start": "Input & Start",
+  "Create and Save": "Create & Save",
+  "TotalVocabs": "Vocabs",
+  "ViewDictation": "View",
+  "CompletePracticeHeader": "You got {{mark}} marks in {{totalQuestion}} questions",
+  "UpdatedDictation": "Dictation {{title}} is updated",
+  "DeletedDictation": "Dictation {{title}} is deleted",
+  "CharactersTooShort": " cannot less than {{length}} characters",
+  "CharactersTooLong": " cannot over {{length}} characters",
+  "ContactUsUrl": "https://goo.gl/forms/XtQdla9UKYDlAiRl2",
+  "LastTimesPractice": "Last {{times}} Practice Results",
+  "About_Us_Content": "We provide free English vocabulary exercise or create vocabulary exercise yourself. Totally free without advertisement. Program can speak any English word or sentence, also provides image and phonetic symbols when learning vocabulary."
+}

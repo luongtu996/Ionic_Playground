@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button *ngIf="!historyStored"></ion-menu-button>
+      <ion-button *ngIf="historyStored" fill="clear" (click)="navigationService.goBack()"><fa-icon icon="angle-left" size="2x"></fa-icon></ion-button>
+    </ion-buttons>
+    <ion-title>{{'Finished Practice' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="inner-content">
+    <ion-card class="card">
+      <ion-card-header style="font-size: 1.2rem;" *ngIf="histories">{{ 'CompletePracticeHeader' | translate:{mark:mark, totalQuestion: histories.length} }}</ion-card-header>
+      <ion-row class="ion-no-padding">
+        <ion-col>
+          <ion-button (click)="getDictationThenOpen()"><fa-icon [icon]="['fas', 'redo']"></fa-icon>&nbsp;{{'Retry'|translate}}</ion-button>
+          <ion-button *ngIf="dictation && dictationService.isGeneratedDictation(dictation)" (click)="navigationService.openVocabularyStarter()">
+            <fa-icon icon="sliders-h"></fa-icon>&nbsp;{{'Select Difficulty'|translate}}
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <ion-button *ngIf="dictation && dictation.id > 0 && !historyStored" color="secondary" (click)="recommend()" [disabled]="recommended">
+            <fa-icon [icon]="['fas', 'thumbs-up']"></fa-icon>&nbsp;{{ recommendBtnText() }}
+          </ion-button>
+          <ion-button
+            *ngIf="dictation && dictation.id <= 0 && !dictationService.isGeneratedDictation(dictation)"
+            (click)="navigationService.editDictation(dictation)"
+            color="secondary">
+            <fa-icon [icon]="['fas', 'save']"></fa-icon>&nbsp;{{'Save'|translate}}
+          </ion-button>
+          <ion-button *ngIf="showOpenMyVocabulary()" color="secondary" (click)="navigationService.openMemberHome('vocabulary')">
+            <fa-icon icon="folder-open"></fa-icon>&nbsp;{{'To My Vocabulary'|translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <dictation-card *ngIf="!dictationService.isGeneratedDictation(dictation)" #dictationCard [dictation]="dictation" [showContent]="false"></dictation-card>
+    <practice-history-list [histories]="histories" [mark]="mark" ></practice-history-list>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

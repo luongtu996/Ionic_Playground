@@ -1,0 +1,34 @@
+{
+  "name": "@aiao/nest-angular-universal",
+  "version": "0.1.3-alpha.0",
+  "description": "angular universal for nest",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "angular",
+    "universal",
+    "nest",
+    "ssr",
+    "fastify"
+  ],
+  "scripts": {
+    "build": "cd ../../ && yarn build nest-angular-universal --prod"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@aiao/universal-fastify-engine": "^0.1.2"
+  },
+  "devDependencies": {
+    "@aiao/universal-fastify-engine": "^0.1.3-alpha.0"
+  }
+}

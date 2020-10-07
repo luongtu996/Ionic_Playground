@@ -1,0 +1,347 @@
+# Write your query or mutation here
+query findAllVolunteers {
+  findVolunteers {
+    items {
+      id,
+      firstName,
+      lastName,
+      email,
+      username,
+      address1,
+      address2,
+      city,
+      postcode,
+      canDeliver,
+      actions {
+        id,
+        products {
+          id,
+          product {
+            id,
+            label
+          }
+        }
+      }
+    }
+  }
+}
+
+query findAllRecipients {
+  findRecipients {
+    items {
+      id,
+      lastName,
+      firstName,
+      phone,
+      address1,
+      address2,
+      city,
+      postcode,
+      prefferedProducts
+    }
+  }
+}
+
+mutation createRecipient {
+  createRecipient(input: {
+    lastName: "Pierre",
+    firstName: "Jean Luc",
+    phone: "098978789",
+    address1: "1 rue de Quelques Part",
+    address2: "En France",
+    city: "Paris",
+    postcode: 75001
+  }) {
+    id,
+    lastName,
+    firstName,
+    phone,
+    address1,
+    address2,
+    city,
+    postcode
+  }
+}
+
+mutation createVolunteerAction {
+  createVolunteerAction(
+    input: {
+      id: ""
+      title: "Deliver to Mr Boris"
+      description: "Phone Number: +473020323"
+      recipientId: "5e8f3eda92787169c1e7cd87"
+      volunteerId: "5e9782e94b8d743f02b84e79",
+      status: ASSIGNED
+    }
+  ) {
+    id
+    title
+    description
+  }
+}
+
+
+mutation createDistributionCentre {
+  createDistributionCentre(
+    input: {
+      name: "NY Plaza Charity Chain"
+      address: "Plaza Key"
+      address2: "Brooklyn"
+      city: "New York"
+      lat: "0"
+      long: "0"
+    }
+  ) {
+    id
+  }
+}
+
+query findAllDistributionCentres {
+  findDistributionCentres {
+    items {
+      id,
+      name,
+      address1,
+      address2,
+      city,
+      postcode,
+      lat,
+      long
+    }
+  }
+}
+
+query findAllVolunteerActions {
+  findVolunteerActions {
+    items {
+      id,
+      products {
+        id,
+        product {
+          id
+          label
+        }
+      }
+    }
+  }
+}
+
+mutation createProductMutation {
+  createProduct(input: {
+    label: "TP", 
+    description: "Toilet Paper"}) {
+    id
+  }
+}
+
+query findAllProducts {
+  findProducts {
+    items {
+      id,
+      description,
+      label,
+      distributionCentre {
+        id,
+        name
+      }
+    }
+  }
+}
+
+mutation createVolunteerActionProduct {
+  createVolunteerActionProduct(
+    input: {
+      productId: "5eb16d8d54bbea1125a1fa33"
+      volunteerActionId: "5e97865721f5e895feaa49db"
+    }
+  ) {
+    id
+    product {
+      id
+    }
+    volunteerAction {
+      id
+    }
+  }
+}
+
+query findVolunteerActions {
+  findVolunteerActions {
+    items {
+      id,
+      title,
+      description,
+      status,
+      distributionCentre {
+        name,
+        lat,
+        long
+      },
+      recipient {
+        firstName,
+        lastName,
+        phone,
+        prefferedProducts
+      },
+      volunteer {
+        id,
+        lastName,
+        firstName
+      },
+      products {
+        id,
+        product {
+          id,
+          label
+        }
+      }
+    }
+  }
+}
+
+# Queries that will be used to construct the report page
+query getTodayActionReport($todayMidnight: DateTime, $tomorrowMidnight: DateTime, $lat: [Float], $long: [Float]) {
+  CreatedActions: findVolunteerActions(filter: { status: { eq: "CREATED" } }) {
+    items {
+      id
+    }
+  }
+
+  AssignedActions: findVolunteerActions(filter: { status: { eq: "ASSIGNED" } }) {
+    items {
+      id
+    }
+  }
+
+  CompletedActions: findVolunteerActions(filter: { status: { eq: "COMPLETED" } }) {
+    items {
+      id
+    }
+  }
+
+  ActionsCreatedToday: findVolunteerActions(
+    filter: { status: { eq: "CREATED" }, createdAt: { ge: $todayMidnight } }
+  ) {
+    items {
+      id
+    }
+  }
+
+  ActionsAssignedToday: findVolunteerActions(
+    filter: { status: { eq: "ASSIGNED" }, assignedAt: { ge: $todayMidnight } }
+  ) {
+    items {
+      id
+    }
+  }
+
+  ActionsCommpletedToday: findVolunteerActions(
+    filter: { status: { eq: "COMPLETED" }, completedAt: { ge: $todayMidnight } }
+  ) {
+    items {
+      id
+    }
+  }
+
+  ActionsCreatedButNeverAssigned: findVolunteerActions(
+    filter: { status: { eq: "CREATED" }, assignedAt: { eq: null } }
+  ) {
+    items {
+      id
+    }
+  }
+
+  ActionsAssignedButNeverCompleted: findVolunteerActions(
+    filter: {
+      status: { eq: "ASSIGNED" }
+      completedAt: { eq: null }
+    }
+  ) {
+    items {
+      id
+    }
+  }
+  
+  ActionsCreatedTodayButNotAssigned: findVolunteerActions(
+    filter: {
+      status: { eq: "CREATED" }
+      createdAt: { ge: $todayMidnight }
+      assignedAt: { eq: null }
+    }
+  ) {
+    items {
+      id
+    }
+  }
+  
+  ActionsAssignedTodayButNotCompleted: findVolunteerActions(
+    filter: {
+      status: { eq: "ASSIGNED" }
+      assignedAt: { ge: $todayMidnight }
+      completedAt: { eq: null }
+    }
+  ) {
+    items {
+      id
+    }
+  }
+  
+  ActionsCreatedAssignedAndCompletedToday: findVolunteerActions(
+    filter: {
+      status: { eq: "COMPLETED" }
+      createdAt: { ge: $todayMidnight, lt: $tomorrowMidnight }
+      assignedAt: { ge: $todayMidnight, lt: $tomorrowMidnight }
+      completedAt: { ge: $todayMidnight, lt: $tomorrowMidnight }
+    }
+  ) {
+    items {
+      id
+    }
+  }
+
+ CreatedActionsNearbyCurrentLocation: findRecipients(filter: {
+    lat: {
+      between: $lat
+    },
+    long: {
+      between: $long
+    }
+  }) {
+    items {
+      id,
+      actions(filter: {status: {eq: "CREATED"}}) {
+        id
+      }
+    }
+  }
+  AssignedActionsNearbyCurrentLocation: findRecipients(filter: {
+    lat: {
+      between: $lat
+    },
+    long: {
+      between: $long
+    }
+  }) {
+    items {
+      id,
+      actions(filter: {status: {eq: "ASSIGNED"}}) {
+        id
+      }
+    }
+  }
+  CompletedActionsNearbyCurrentLocation: findRecipients(filter: {
+    lat: {
+      between: $lat
+    },
+    long: {
+      between: $long
+    }
+  }) {
+    items {
+      id,
+      actions(filter: {status: {eq: "COMPLETED"}}) {
+        id
+      }
+    }
+  }
+}

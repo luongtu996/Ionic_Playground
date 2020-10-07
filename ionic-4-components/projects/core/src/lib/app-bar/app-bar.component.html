@@ -1,0 +1,16 @@
+<div class="appbar"
+  [ngClass]="{'cutout': cutoutVisible, 'left': fivFab.fivAppBarFab === 'left', 'right': fivFab.fivAppBarFab === 'right'}">
+  <div class="appbar-rect left">
+    <div class="tabs">
+      <ng-content select="[left]"></ng-content>
+    </div>
+  </div>
+  <ng-content select="fiv-fab"></ng-content>
+  <svg  viewBox="0 0 100 50" width="100" height="50" xmlns="http://www.w3.org/2000/svg"><path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd"/></svg>
+  <div class="rect-filler"></div>
+  <div class="appbar-rect right">
+    <div class="tabs">
+      <ng-content select="[right]"></ng-content>
+    </div>
+  </div>
+</div>

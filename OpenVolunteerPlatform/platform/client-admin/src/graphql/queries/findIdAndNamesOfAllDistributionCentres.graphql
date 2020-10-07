@@ -1,0 +1,8 @@
+query findIdAndNamesOfAllDistributionCentres($limit: Int, $offset: Int) {
+    findDistributionCentres(page: {limit: $limit, offset: $offset}) {
+      items {
+        _id,
+        name
+      }
+    }
+  }

@@ -1,0 +1,117 @@
+[
+    {
+      "icon": "american-football-outline",
+      "name": "Action Sheet",
+      "redirectTo": "/action-sheet"
+    },
+    {
+      "icon": "alert-circle-outline",
+      "name": "Alert",
+      "redirectTo": "/alert"
+    },
+    {
+      "icon": "beaker-outline",
+      "name": "Avatar",
+      "redirectTo": "/avatar"
+    },
+    {
+      "icon": "radio-button-off-outline",
+      "name": "Buttons",
+      "redirectTo": "/button"
+    },
+    {
+      "icon": "card-outline",
+      "name": "Card",
+      "redirectTo": "/card"
+    },
+    {
+      "icon": "checkbox-outline",
+      "name": "Checkbox",
+      "redirectTo": "/check"
+    },
+    {
+      "icon": "calendar-outline",
+      "name": "Date Time",
+      "redirectTo": "/date-time"
+    },
+    {
+      "icon": "car-outline",
+      "name": "Fab",
+      "redirectTo": "/fab"
+    },
+    {
+      "icon": "grid-outline",
+      "name": "grid",
+      "redirectTo": "/grid"
+    },
+    {
+      "icon": "infinite-outline",
+      "name": "infinite",
+      "redirectTo": "/infinite"
+    },
+    {
+      "icon": "hammer-outline",
+      "name": "input Forms",
+      "redirectTo": "/input"
+    },
+    {
+      "icon": "list-outline",
+      "name": "list Sliding",
+      "redirectTo": "/list"
+    },
+    {
+      "icon": "reorder-three-outline",
+      "name": "list - Reorder",
+      "redirectTo": "/list-reorder"
+    },
+    {
+      "icon": "refresh-circle-outline",
+      "name": "loading",
+      "redirectTo": "/loading"
+    },
+    {
+      "icon": "tablet-portrait-outline",
+      "name": "modal",
+      "redirectTo": "/modal"
+    },
+    {
+      "icon": "phone-portrait-outline",
+      "name": "popover",
+      "redirectTo": "/popover"
+    },
+    {
+      "icon": "code-working-outline",
+      "name": "ProgressBar",
+      "redirectTo": "/progress"
+    },
+    {
+      "icon": "arrow-down-circle-outline",
+      "name": "refresher",
+      "redirectTo": "/refresher"
+    },
+    {
+      "icon": "search-outline",
+      "name": "search",
+      "redirectTo": "/search"
+    },
+    {
+      "icon": "copy-outline",
+      "name": "segment",
+      "redirectTo": "/segment"
+    },
+    {
+      "icon": "albums-outline",
+      "name": "slides",
+      "redirectTo": "/slides"
+    },
+    {
+      "icon": "cog-outline",
+      "name": "tabs",
+      "redirectTo": "/tabs"
+    },
+    {
+      "icon": "pricetag-outline",
+      "name": "toast",
+      "redirectTo": "/toast"
+    }
+  ]

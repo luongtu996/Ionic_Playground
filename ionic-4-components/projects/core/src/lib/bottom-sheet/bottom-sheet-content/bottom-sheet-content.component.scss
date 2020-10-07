@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  --fiv-border-radius: 12px;
+  --fiv-padding: 20px;
+  padding-top: var(--fiv-padding);
+  --fiv-background: var(--ion-background-color);
+  --fiv-handle-background: var(--ion-color-light-shade);
+  background: var(--fiv-background);
+}
+
+.bsc-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+:host.rounded {
+  border-top-left-radius: var(--fiv-border-radius);
+  border-top-right-radius: var(--fiv-border-radius);
+}
+
+.handle {
+  display: block;
+  background: var(--fiv-handle-background);
+  border-radius: 12px;
+  top: 8px;
+  width: 32px;
+  height: 8px;
+  position: absolute;
+}
+
+.content {
+  height: 100%;
+}

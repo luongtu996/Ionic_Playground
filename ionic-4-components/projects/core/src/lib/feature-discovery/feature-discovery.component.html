@@ -1,0 +1,17 @@
+<div class="backdrop" (click)="fivBackdropClick.emit()"></div>
+<div [@scale]="animationState" (@scale.done)="handleCircleAnimation($event)" #circle class="circle"
+  [style.height]="height + 'px'" [style.width]="width + 'px'" [style.top]="top + 'px'" [style.left]="left + 'px'">
+  <div #pOuter class="feature center pulse" [style.height]="(innerDiameter + featurePadding) + 'px'"
+    [style.width]="(innerDiameter + featurePadding) + 'px'">
+  </div>
+  <div #pInner class="feature center inner  ion-activatable" (click)="fivClick.emit($event)"
+    [style.height]="(innerDiameter + (icon ? featurePadding : 0)) + 'px'"
+    [style.width]="(innerDiameter + (icon ? featurePadding : 0)) + 'px'">
+    <fiv-icon class="center" *ngIf="icon" [name]="icon"></fiv-icon>
+    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+  </div>
+</div>
+<div class="content" *ngIf="animationState === 'visible'" [@contentAnim] [style.width]="contentWidth + 'px'"
+  [style.height]="contentHeight + 'px'" [style.top]="contentTop + 'px'" [style.left]="contentLeft + 'px'">
+  <ng-content></ng-content>
+</div>

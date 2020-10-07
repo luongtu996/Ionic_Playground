@@ -1,0 +1,44 @@
+<app-header title="Loading Indicators"></app-header>
+
+<ion-content>
+
+  <ion-grid class="page-content" fixed>
+    <ion-row>
+      <ion-col size="12">
+        <app-example>
+
+          <ion-button [disabled]="bar.loading" (click)="bar.fillIn(2000)">
+            fill
+          </ion-button>
+
+          <ion-button [disabled]="bar.loading" (click)="bar.shrinkIn(2000)">
+            shrink
+          </ion-button>
+          <ion-button [disabled]="bar.loading" (click)="bar.load()">
+            load
+          </ion-button>
+          <ion-button [disabled]="!bar.loading" (click)="bar.unload()">
+            unload
+          </ion-button>
+          <ion-button [disabled]="!bar.loading" (click)="bar.complete()">
+            complete
+          </ion-button>
+          <div class="wrapper">
+            <div [fivCenter] class="progress-bar">
+              <fiv-loading-progress-bar #bar></fiv-loading-progress-bar>
+            </div>
+          </div>
+        </app-example>
+        <app-example>
+          <div class="wrapper">
+            <div [fivCenter]>
+              <fiv-spinner></fiv-spinner>
+            </div>
+          </div>
+
+        </app-example>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

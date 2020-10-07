@@ -1,0 +1,44 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>slides</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <!-- <ion-content>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide class="slide1">
+        <h1>Slide 1</h1>
+      </ion-slide>
+      <ion-slide class="slide2">
+        <h1>Slide 2</h1>
+      </ion-slide>
+      <ion-slide class="slide3">
+        <h1>Slide 3</h1>
+      </ion-slide>
+    </ion-slides>
+  </ion-content> -->
+
+  <ion-slides mode="ios" pager="ios" scrollbar="ios" class="silde-full">
+    <ion-slide *ngFor="let slide of slides">
+      <ion-card mode="ios">
+        <img [src]="slide.img" class="slide-img">
+
+        <ion-card-header>
+          <ion-card-subtitle>{{slide.titulo}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{slide.desc}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-button (click)="onClick()" expand="block" >
+        Comenzar
+      </ion-button>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

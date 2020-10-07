@@ -1,0 +1,184 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+# defaults
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12-browsers
+      environment:
+        NODE_OPTIONS: --max_old_space_size=4096
+    - image: circleci/postgres:12-alpine
+      environment:
+        POSTGRES_USER: test
+        POSTGRES_DB: test
+  environment:
+    TYPEORM_PLUS_TEST_USERNAME: test
+    TYPEORM_PLUS_TEST_DATABASE: test
+
+# env
+set_env: &set_env
+  name: Setup Environment Variables
+  command: |
+    if [[ $CIRCLE_PULL_REQUEST ]]
+    then
+      echo 'Fetching Base Commit from GitHub'
+      echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
+      source $BASH_ENV
+      echo "export CIRCLE_PR_BASE_SHA=`curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.base.sha'`" >> $BASH_ENV
+      echo 'export AFFECTED_ARGS="--base ${CIRCLE_PR_BASE_SHA}"' >> $BASH_ENV
+    else
+      echo 'Fetching Base Commit from Deploy Cache'
+      if [[ ! -f dist/last-deploy.txt ]]
+      then
+        mkdir -p dist && git rev-parse HEAD~1 > dist/last-deploy.txt
+      else
+        echo "find last deploy"
+        cat dist/last-deploy.txt
+      fi
+      echo 'export AFFECTED_ARGS="--base $(cat dist/last-deploy.txt)"' >> $BASH_ENV
+    fi
+    source $BASH_ENV
+    echo $AFFECTED_ARGS
+    echo $BASH_ENV
+
+# install
+install_yarn: &install_yarn
+  name: yarn install
+  command: yarn install --frozen-lockfile --non-interactive --ignore-scripts
+
+#
+
+decorate_angular_cli: &decorate_angular_cli
+  name: Decorate Angular Cli
+  command: node ./decorate-angular-cli.js
+
+# ngcc
+ngcc: &ngcc
+  name: Ngcc
+  command: yarn run postngcc
+
+# build_tools
+build_tools: &build_tools
+  name: Build Tools
+  command: yarn build:tools
+
+# hotfix
+hotfix: &hotfix
+  name: Hotfix
+  command: yarn task:hotfix
+
+# check_workspace
+check_workspace: &check_workspace
+  name: Check Workspace
+  command: node dist/tools/scripts/check-workspace --lib ${AFFECTED_ARGS}
+
+# Build
+build: &build
+  name: Build
+  command: yarn affected:build ${AFFECTED_ARGS} --with-deps --prod
+
+# cache
+restore_yarn_cache: &restore_yarn_cache
+  name: Restore Yarn Cache
+  keys:
+    - node-deps-node12-{{ checksum "yarn.lock" }}
+
+save_yarn_cache: &save_yarn_cache
+  name: Save Yarn Cache
+  key: node-deps-node12-{{ checksum "yarn.lock" }}
+  paths:
+    - ~/.cache
+
+# dist
+restore_dist: &restore_dist
+  name: Restore Dist
+  keys:
+    - aiao-dist-001-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
+    - aiao-dist-001-{{ .Environment.CIRCLE_BRANCH }}
+
+save_dist: &save_dist
+  name: Save Dist
+  key: aiao-dist-001-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_BUILD_NUM }}
+  paths:
+    - coverage
+    - dist/last-deploy.txt
+
+# format
+format: &format
+  name: format
+  command: yarn format:check ${AFFECTED_ARGS}
+
+# lint
+lint: &lint
+  name: lint
+  command: ./node_modules/.bin/nx workspace-lint && yarn affected:lint ${AFFECTED_ARGS} --parallel
+
+# check_lodash
+check_lodash: &check_lodash
+  name: Check Lodash Import
+  command: node dist/tools/scripts/affected-lodash ${AFFECTED_ARGS} --check
+
+test: &test
+  name: test
+  command: yarn affected:test ${AFFECTED_ARGS} --ci --code-coverage
+
+# e2e
+e2e: &e2e
+  name: e2e
+  command: yarn affected:e2e ${AFFECTED_ARGS} --configuration production --headless
+
+# coverage
+coverage: &coverage
+  name: coverage
+  command: bash <(curl -s https://codecov.io/bash)
+
+# artifacts
+store_artifacts_coverage: &store_artifacts_coverage
+  name: Artifacts coverage
+  prefix: coverage
+  path: coverage
+
+update_deploy: &update_deploy
+  name: Update Deploy
+  command: git rev-parse HEAD > dist/last-deploy.txt
+
+# jobs
+jobs:
+  check_pr:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore_yarn_cache
+      - restore_cache: *restore_dist
+      - run: *set_env
+      - run: *install_yarn
+      - run: *decorate_angular_cli
+      - run: *ngcc
+      - run: *build_tools
+      - run: *hotfix
+      - run: *check_workspace
+      - run: *format
+      - run: *lint
+      # - run: *check_lodash
+      # - run: *build
+      - run: *test
+      # - run: *e2e
+      - run: *coverage
+      - run: *update_deploy
+      - save_cache: *save_dist
+      - save_cache: *save_yarn_cache
+      # - store_artifacts: *store_artifacts_coverage
+
+workflows:
+  version: 2
+  check:
+    jobs:
+      - check_pr:
+          filters:
+            branches:
+              ignore:
+                - i10n

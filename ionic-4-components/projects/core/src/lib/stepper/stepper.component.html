@@ -1,0 +1,9 @@
+<ion-list *ngIf="mode === 'vertical'">
+  <fiv-step-content (fivDidClose)="fivClose.emit({index: i, param: param}); param = null;" (fivClick)="fivClick.emit(i)" *ngFor="let content of contents; let i = index; let l = last;" [icon]="content.icon" [index]="i + 1"
+    [isLast]="l" [title]="content.title" [subtitle]="content.subtitle" [isOpen]="content.open">
+    <ng-container [ngTemplateOutlet]="content.content"></ng-container>
+  </fiv-step-content>
+</ion-list>
+<div *ngIf="mode === 'horizontal'">
+  <fiv-stepper-horizontal (fivSelect)="select($event)" [contents]="contents"></fiv-stepper-horizontal>
+</div>

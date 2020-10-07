@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-img src="assets/img/logo_new.png" class="navbar-logo" alt="logo"></ion-img>
+    </ion-title>
+    <ion-buttons slot="end"></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 16px;">
+    <ion-card class="header">
+      <ion-card-header>
+        <fa-icon [icon]="['fas', 'leaf']"></fa-icon> FunFunSpell
+      </ion-card-header>
+      <ion-card-content>{{ 'Online Dictation' | translate }}</ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6" size-sm="6" size-md="4" size-lg="3">
+            <ion-card class="card-button">
+              <ion-card-content>
+                <div><fa-icon [icon]="['fas', 'rocket']" size="4x"></fa-icon></div>
+                <div>{{ 'Input and Start' | translate }}</div>
+                <div><ion-button id="instant-dictation-button" fill="outline" color="light" (click)="navigationService.openInstantDictation()">{{ 'Menu_Start' | translate }}</ion-button></div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-sm="6" size-md="4" size-lg="3" class="hidden-sm-down">
+            <ion-card class="card-button">
+              <ion-card-content>
+                <div><fa-icon [icon]="['fas', 'headphones']" size="4x"></fa-icon></div>
+                <div>{{ 'Create and Save' | translate }}</div>
+                <div><ion-button fill="outline" color="light" (click)="navigationService.editDictation()">{{ 'Menu_Create' | translate }}</ion-button></div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col *ngIf="authService.isAuthenticated()" size="6" size-sm="6" size-md="4" size-lg="3" class="hidden-sm-down">
+            <ion-card class="card-button">
+              <ion-card-content>
+                <div><fa-icon icon="list" size="4x"></fa-icon></div>
+                <div>{{ 'Show record' | translate }}</div>
+                <div><ion-button fill="outline" color="light" (click)="navigationService.openMemberHome('dictation')">{{ 'My Dictation' | translate }}</ion-button></div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6" size-sm="6" size-md="4" size-lg="3">
+            <ion-card class="card-button">
+              <ion-card-content>
+                <div><fa-icon [icon]="['fas', 'search']" size="4x"></fa-icon></div>
+                <div>{{ 'Find & Start' | translate }}</div>
+                <div><ion-button fill="outline" color="light" (click)="navigationService.openSearchDictation()">{{ 'Search' | translate }}</ion-button></div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-card-content>{{ 'English Exercise' | translate }}</ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6" size-sm="6" size-md="4" size-lg="3">
+            <ion-card class="card-button">
+              <ion-card-content>
+                <div><fa-icon icon="book" size="4x"></fa-icon></div>
+                <div>{{ 'Learn Vocabulary' | translate }}</div>
+                <div><ion-button fill="outline" color="light" (click)="navigationService.openVocabularyStarter()">{{ 'Menu_Start' | translate }}</ion-button></div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card>
+
+    <member-score-ranking [ranking]="memberScoreRanking"></member-score-ranking>
+
+    <dictation-statistics [stat]="dictationStat"></dictation-statistics>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

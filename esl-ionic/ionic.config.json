@@ -1,0 +1,7 @@
+{
+  "name": "FunFunSpell",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

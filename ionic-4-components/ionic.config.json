@@ -1,0 +1,7 @@
+{
+  "name": "fivethree",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

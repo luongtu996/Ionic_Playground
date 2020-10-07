@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start"><ion-menu-button></ion-menu-button></ion-buttons>
+    <ion-title>{{'Dictation Practice' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="inner-content">
+    <ion-card class="card">
+      <ion-card-header>
+        {{'Sentence'|translate}} {{ currentSentence + 1 }}/{{sentences?.length}}
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button shape="round" class="speakButton" (click)="speak()"><fa-icon [icon]="['fas', 'headphones']"></fa-icon>&nbsp;{{'Listen'|translate}}</ion-button>
+            </ion-col>
+            <ion-col class="ion-text-right">
+              <ion-button fill="outline" shape="round" color="secondary" (click)="slower()">
+                <fa-icon [icon]="['fas', 'bicycle']"></fa-icon><span class="ion-hide-md-down">&nbsp;{{'Slower'|translate}}</span>
+              </ion-button>
+              <ion-button fill="outline" shape="round" color="secondary" (click)="faster()">
+                <fa-icon [icon]="['fas', 'rocket']"></fa-icon><span class="ion-hide-md-down">&nbsp;{{'Faster'|translate}}</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item class="answerInput">
+                <ion-label position="floating">{{'Answer'|translate}}</ion-label>
+                <ion-input #answerElement [(ngModel)]="answer" type="text" inputmode="verbatim" maxlength="255" (keyup.enter)="submitAnswer()"
+                           autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <div>
+            <ion-button fill="clear" size="large"
+                        [class.grey-text]="!showKeyboard"
+                        (click)="clickShowKeyboard()">
+              <fa-icon icon="keyboard"></fa-icon>
+            </ion-button>
+            <ion-button class="submitBtn ion-float-right" (click)="submitAnswer()">
+              <fa-icon icon="check"></fa-icon>&nbsp;{{'Submit'|translate}}
+            </ion-button>
+          </div>
+          <div *ngIf="showKeyboard"><virtual-keyboard (keyPress)="onKeyPress($event)" (backspace)="onBackspace($event)"></virtual-keyboard></div>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <sentence-histories [histories]="histories"></sentence-histories>
+
+  </div>
+  <app-footer></app-footer>
+</ion-content>

@@ -1,0 +1,53 @@
+{
+  "name": "@aiao/elements",
+  "version": "0.7.1-alpha.3",
+  "description": "web components",
+  "homepage": "https://github.com/aiao-io/aiao",
+  "author": "Jimmy<hero63418@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aiao-io/aiao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aiao-io/aiao/issues"
+  },
+  "keywords": [
+    "stencil"
+  ],
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
+  "es2015": "lib/esm/index.js",
+  "es2017": "lib/esm/index.js",
+  "jsnext:main": "lib/esm/index.js",
+  "types": "lib/types/interface.d.ts",
+  "collection": "lib/collection/collection-manifest.json",
+  "collection:main": "lib/collection/index.js",
+  "unpkg": "lib/elements/elements.js",
+  "files": [
+    "lib",
+    "loader",
+    "hydrate",
+    "package.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "cd ../../ && nx build elements --prod"
+  },
+  "dependencies": {
+    "@aiao/elements-cdk": "^0.1.4-alpha.0",
+    "@aiao/url": "^0.0.1",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@aiao/elements-cdk": "*",
+    "@aiao/image-storage": "^0.1.2-alpha.2",
+    "@aiao/stencil-toolkit": "^0.2.1-alpha.2",
+    "@aiao/url": "*",
+    "@aiao/util": "^1.0.0-alpha.1",
+    "@stencil/core": "*"
+  }
+}

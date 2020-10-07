@@ -1,0 +1,56 @@
+{
+  "name": "cupertino-pane",
+  "description": "Multiplatform slide-over pane",
+  "version": "1.1.83",
+  "author": "Roman Antonov (roman-rr)",
+  "homepage": "https://github.com/roman-rr/cupertino-pane/",
+  "repository": "roman-rr/cupertino-pane",
+  "license": "MIT",
+  "main": "dist/cupertino-pane.min.js",
+  "module": "dist/cupertino-pane.esm.bundle.js",
+  "types": "dist/cupertino-pane.d.ts",
+  "scripts": {
+    "build": "gulp build",
+    "tslint": "tslint src/**/*.ts",
+    "dev": "gulp build && gulp server"
+  },
+  "devDependencies": {
+    "del": "^5.1.0",
+    "glob": "^7.1.6",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "gulp-open": "^3.0.1",
+    "rollup": "2.28.2",
+    "rollup-plugin-typescript2": "0.27.3",
+    "terser": "^4.4.0",
+    "tslib": "^1.10.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.4.5"
+  },
+  "bugs": {
+    "url": "https://github.com/roman-rr/cupertino-pane/issues"
+  },
+  "browserslist": [
+    "Android >= 7",
+    "IOS >= 11",
+    "Safari >= 11",
+    "Chrome >= 49",
+    "Firefox >= 31",
+    "Samsung >= 5"
+  ],
+  "keywords": [
+    "app",
+    "cupertino",
+    "pane",
+    "web",
+    "ios",
+    "maps",
+    "javascript",
+    "touch",
+    "slide",
+    "mobile",
+    "cordova",
+    "plugin"
+  ],
+  "dependencies": {}
+}

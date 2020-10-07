@@ -1,0 +1,7 @@
+<ng-container *ngIf="!src">
+  <ng-content></ng-content>
+</ng-container>
+<div class="ion-activatable" (click)="open()">
+  <img #thumbnail class="thumbnail" [src]="src">
+  <ion-ripple-effect type="bounded"></ion-ripple-effect>
+</div>

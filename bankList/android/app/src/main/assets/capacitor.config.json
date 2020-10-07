@@ -1,0 +1,13 @@
+{
+  "appId": "com.marcoajvf.bankList",
+  "appName": "Bank List",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

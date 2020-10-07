@@ -1,0 +1,80 @@
+{
+  "name": "starter-client-admin",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@capacitor/core": "2.4.1",
+    "@ionic/react": "5.3.2",
+    "@ionic/react-router": "5.3.2",
+    "@apollo/client": "3.2.0",
+    "apollo-link-context": "1.0.20",
+    "apollo-link-ws": "1.0.20",
+    "google-maps-react": "2.0.6",
+    "graphql": "15.3.0",
+    "graphql-tag": "2.11.0",
+    "humanize-string":"2.1.0",
+    "ionicons": "5.1.2",
+    "keycloak-js": "9.0.3",
+    "moment": "2.27.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0",
+    "simpl-schema": "1.10.0",
+    "subscriptions-transport-ws": "0.9.18",
+    "uniforms": "3.0.0-rc.3",
+    "uniforms-bridge-simple-schema-2": "3.0.0-rc.3",
+    "uniforms-ionic": "0.1.0"
+  },
+  "scripts": {
+    "start": "npm run build && cap serve",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "build:generic": "REACT_APP_URI_FORMAT=RELATIVEURI react-scripts build",
+    "run:android": "cap copy android && cap open android",
+    "run:ios": "cap copy ios && cap open ios",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "resolutions": {
+    "uniforms": "3.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "2.4.1",
+    "@graphql-codegen/add": "2.0.1",
+    "@graphql-codegen/typescript": "1.17.9",
+    "@graphql-codegen/typescript-operations": "1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "2.0.6",
+    "@test-graphql-cli/codegen": "4.0.1-beta.6",
+    "@testing-library/jest-dom": "5.11.4",
+    "@testing-library/react": "10.4.9",
+    "@testing-library/user-event": "10.4.1",
+    "@types/googlemaps": "3.39.13",
+    "@types/jest": "25.2.3",
+    "@types/moment": "2.13.0",
+    "@types/node": "12.12.55",
+    "@types/react": "16.9.49",
+    "@types/react-dom": "16.9.8",
+    "@types/react-router": "5.1.8",
+    "@types/react-router-dom": "5.1.5",
+    "@types/simpl-schema": "0.2.8",
+    "graphql-cli": "4.0.1-beta.6",
+    "react-scripts": "3.4.3",
+    "typescript": "3.9.7"
+  },
+  "description": "An Ionic project"
+}

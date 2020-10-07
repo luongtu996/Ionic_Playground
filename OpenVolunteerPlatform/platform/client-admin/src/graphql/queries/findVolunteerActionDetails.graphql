@@ -1,0 +1,23 @@
+query findVolunteerActionDetails($id: GraphbackObjectID!) {
+  getVolunteerAction(id: $id ) {
+    _id,
+    title,
+    description,
+    status,
+    distributionCentre {
+     ...DistributionCentreFields
+    },
+    recipient {
+      ...RecipientFields
+    },
+    volunteer {
+      ...VolunteerFields
+    },
+    products {
+      _id,
+      product {
+        ...ProductFields
+      }
+    }
+  }
+}

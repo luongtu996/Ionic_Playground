@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>In Viewport: {{visible}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p *ngIf="!visible">
+    scroll to reveal the button
+  </p>
+  <div class="container">
+
+    <ion-button [fivCenter] fivViewport (fivAppear)="appear($event)" (fivDisappear)="disappear($event)">
+      Click me
+    </ion-button>
+
+  </div>
+
+
+
+</ion-content>

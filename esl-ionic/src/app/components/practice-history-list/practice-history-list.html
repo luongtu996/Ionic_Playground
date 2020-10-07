@@ -1,0 +1,21 @@
+<ion-card class="card" *ngIf="histories" style="margin-top: 8px;">
+  <ion-card-header>
+    <fa-icon [icon]="['fas', 'history']"></fa-icon> {{'Records'|translate}}
+    <score class="ion-float-right" [mark]="mark" [total]="histories.length"></score>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let history of histories; let i = index" [@flyIn]="history.state">
+        <ion-badge item-start style="background-color: #4CAF50; margin: 0px;">{{ histories.length - i }}</ion-badge>
+        <ion-label>
+          <ion-row>
+            <ion-col>{{ history.question.word }}</ion-col>
+            <ion-col [class.green-text]="history.correct" [class.red]="!history.correct">{{ history.answer }}</ion-col>
+            <ion-col class="hidden-md-down">[{{ history.question.ipaunavailable ? 'N.A.' : history.question.ipa }}]</ion-col>
+            <ion-col class="ion-text-right"><fa-icon [icon]="['fas', 'check']" *ngIf="history.correct" class="green-text"></fa-icon><fa-icon [icon]="['fas', 'times']" *ngIf="!history.correct" class="red"></fa-icon></ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
